@@ -8,11 +8,13 @@ export default function (timeDurationString: string): number {
   if (reptms.test(timeDurationString)) {
     const matches = reptms.exec(timeDurationString);
     // console.log(matches)
-    hours = Number(matches[1]) || 0;
-    minutes = Number(matches[2]) || 0;
-    seconds = Number(matches[3]) || 0;
-    totalseconds = (((hours * 3600) + minutes) * 60) + seconds;
-    return totalseconds;
+    if (matches !== null) {
+      hours = Number(matches[1]) || 0;
+      minutes = Number(matches[2]) || 0;
+      seconds = Number(matches[3]) || 0;
+      totalseconds = (((hours * 3600) + minutes) * 60) + seconds;
+      return totalseconds;
+    }
   }
 
   return 0;
